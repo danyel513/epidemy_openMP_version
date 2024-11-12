@@ -1,0 +1,14 @@
+-----------/------------ 
+Total time: 9.089379 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 7.389908 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 1 
+-----------/------------ 
+
