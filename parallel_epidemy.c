@@ -1,5 +1,9 @@
 #include "epidemy.h"
 
+// define the schedule and the chunk size
+#define SCHEDULE static
+#define CHUNK_SIZE 10
+
 // simulation
 void start_parallel_simulation(Person_t *p, int n)
 {
@@ -11,7 +15,7 @@ void start_parallel_simulation(Person_t *p, int n)
         #pragma omp parallel num_threads(THREAD_NUMBER) default(none)
         {
             // assign threads chunks of the array and move persons around
-            #pragma omp for schedule(static) chunksize(10)
+            #pragma omp for schedule(SCHEDULE) chunksize(CHUNK_SIZE)
             for (int i = 0; i < n; i++)
             {
                 movePerson(&p[i]);
@@ -19,7 +23,7 @@ void start_parallel_simulation(Person_t *p, int n)
             // threads will sync here
 
             // compute the status
-            #pragma omp for schedule(static) chunksize(10)
+            #pragma omp for schedule(SCHEDULE) chunksize(CHUNK_SIZE)
             for (int i = 0; i < n; i++)
             {
                 computeFutureStatus(p, n, i);
@@ -27,7 +31,7 @@ void start_parallel_simulation(Person_t *p, int n)
             //threads will synchronise here
 
             // update the future status
-            #pragma omp for schedule(static) chunksize(10)
+            #pragma omp for schedule(SCHEDULE) chunksize(CHUNK_SIZE)
             for (int i = 0; i < n; i++)
             {
                 p[i].currentStatus = p[i].futureStatus;

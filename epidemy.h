@@ -68,7 +68,7 @@ void computeFutureStatus(Person_t *p, int n, int index); // finds the next statu
 void updateStatus(Person_t *p, int n); // computes the future status of a person to the current status
 
 // parallel functions
-
+// observation: by using openMP we don't need specialized functions
 
 // general use functions
 void checkArguments(int argc, char *argv[]); // checks and saves args
