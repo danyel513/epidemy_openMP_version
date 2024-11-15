@@ -119,10 +119,30 @@ Total number of threads: 5
 -----------/------------ 
 
 -----------/------------ 
-Schedule: dynamic Chunk size: 100 
-Total time: 31.671138 seconds
+Total time: 7.430384 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 7.096139 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 10 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 31.342853 seconds
 Total number of persons: 50000
 Total time of simulation: 50 
 Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 29.511643 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 10 
 -----------/------------ 
 

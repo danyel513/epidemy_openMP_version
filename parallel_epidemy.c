@@ -1,7 +1,8 @@
 #include "epidemy.h"
 
 // simulation
-void start_parallel_simulation_v1(Person_t *p, int n)
+
+void start_parallel_simulation_v1(Person_t *p, int n) // in the first version is implemented omp parallel for
 {
     int time = TOTAL_SIMULATION_TIME;
 
@@ -42,6 +43,74 @@ void start_parallel_simulation_v1(Person_t *p, int n)
     }
 }
 
+void start_parallel_simulation_v2(Person_t *p, int n) // in the second version one thread will be creating the tasks
+                                                // and the others will solve them
+{
+    int time = TOTAL_SIMULATION_TIME;
+
+    while (time--) // decrementing the total time of the simulation
+    {
+        // create the threads
+#pragma omp parallel num_threads(THREAD_NUMBER) default(none)
+        {
+            for (int split = 0; split < THREAD_NUMBER-1; split++) // split the whole array in THREAD_NUMBER-1 pieces
+            {
+                int start = split * n / (THREAD_NUMBER - 1);
+                int end = (split == THREAD_NUMBER-2) ? n : start + n / (THREAD_NUMBER - 1); // assure there are all the items processed
+
+                #pragma omp task private(start, end) // create tasks on every piece
+                // and create a copy of local start and end for every task
+                {
+                    for (int i = start; i < end; i++)
+                    {
+                        movePerson(&p[i]);
+                    }
+                }
+            }
+            // waiting time is needed for synchronisation between threads and all tasks should be finished
+            #pragma omp taskwait
+
+            // compute the status
+            for (int split = 0; split < THREAD_NUMBER-1; split++) // split the whole array in THREAD_NUMBER-1 pieces
+            {
+                int start = split * n / (THREAD_NUMBER - 1);
+                int end = (split == THREAD_NUMBER-2) ? n : start + n / (THREAD_NUMBER - 1);; // assure there are all the items processed
+
+                #pragma omp task private(start, end) // create tasks
+                {
+                    for (int i = start; i < end; i++)
+                    {
+                        computeFutureStatus(p, n, i);
+                    }
+                }
+            }
+
+            // sync
+            #pragma omp taskwait
+
+            // update the future status
+            for (int split = 0; split < THREAD_NUMBER-1; split++) // split the whole array in THREAD_NUMBER-1 pieces
+            {
+                int start = split * n / (THREAD_NUMBER - 1);
+                int end = (split == THREAD_NUMBER-2) ? n : start + n / (THREAD_NUMBER - 1);; // assure there are all the items processed
+
+                #pragma omp task private(start, end) // create tasks
+                {
+                    for (int i = start; i < end; i++)
+                    {
+                        p[i].currentStatus = p[i].futureStatus;
+                    }
+                }
+            }
+            // debug purpose only: print array after each round
+#ifdef DEBUG
+            printPersonArray(p, n);
+#endif
+
+        }
+    }
+}
+
 int main(int argc, char **argv)
 {
     // check the given arguments to the program
@@ -69,7 +138,7 @@ int main(int argc, char **argv)
 
 #endif
 
-    start_parallel_simulation_v1(personArray, n);
+    start_parallel_simulation_v2(personArray, n);
 
 #ifdef PARALLEL_MEASUREMENTS
 
@@ -78,7 +147,7 @@ int main(int argc, char **argv)
     elapsed = (double) (finish.tv_sec - start.tv_sec);
     elapsed += (double) (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
 
-    printStats(elapsed, n);
+    printStats(elapsed, n, 0);
 
 #endif
 

@@ -81,7 +81,7 @@ void checkArguments(int argc, char *argv[]); // checks and saves args
 void errorHandler(void); // prints appropriate message for error
 Person_t* readData(int *n); // reads data from the file -> returns the Person array and the array size (as parameter)
 void writeData(Person_t *personArray, int n); // prints data in the output file
-void printStats(double time, int nrPers); // prints in the file the stats obtained by making measurements
+void printStats(double time, int nrPers, unsigned c); // prints in the file the stats obtained by making measurements
 void printPersonArray(Person_t* personArray, int numOfPersons); // prints array data
 
 #endif
