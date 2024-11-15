@@ -6,8 +6,9 @@
 
 // define the schedule and the chunk size
 #define SCHEDULE static
-#define SCHEDULE_STR(x) #x // -> transform the macro in a string
-#define CHUNK_SIZE 10
+#define SCHEDULE_INT 1 // macro for print in the file 1 == static and 0 == dynamic
+#define CHUNK_SIZE 100
+// after several measurements best option is static scheduling and a chunk size of 100
 
 // defined measurements of speedup variables
 #define SERIAL_MEASUREMENTS

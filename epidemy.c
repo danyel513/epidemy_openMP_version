@@ -286,7 +286,7 @@ void printStats(double time, int nrPers) // uses the global TOTAL_SIMULATION_TIM
     {
         f = fopen("performance_parallel.txt", "a");
         fprintf(f, "-----------/------------ \n");
-        fprintf(f, "Schedule: %s Chunk size: %d \n", SCHEDULE_STR(SCHEDULE), CHUNK_SIZE);
+        fprintf(f, "Schedule: %s Chunk size: %d \n", (SCHEDULE_INT ? "static": "dynamic"), CHUNK_SIZE);
     }
 
     if(f == NULL)

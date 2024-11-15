@@ -1,7 +1,7 @@
 #include "epidemy.h"
 
 // simulation
-void start_parallel_simulation(Person_t *p, int n)
+void start_parallel_simulation_v1(Person_t *p, int n)
 {
     int time = TOTAL_SIMULATION_TIME;
 
@@ -27,7 +27,7 @@ void start_parallel_simulation(Person_t *p, int n)
             //threads will synchronise here
 
             // update the future status
-            #pragma omp for schedule(SCHEDULE) chunksize(CHUNK_SIZE)
+            #pragma omp for schedule(SCHEDULE) chunksize(CHUNK_SIZE) nowait
             for (int i = 0; i < n; i++)
             {
                 p[i].currentStatus = p[i].futureStatus;
@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 
 #endif
 
-    start_parallel_simulation(personArray, n);
+    start_parallel_simulation_v1(personArray, n);
 
 #ifdef PARALLEL_MEASUREMENTS
 
