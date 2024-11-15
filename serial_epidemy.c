@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 
 #endif
 
-    writeData(personArray, n, 0);
+    writeData(personArray, n);
 
     free(personArray);
     return 0;

@@ -1,10 +1,15 @@
 #ifndef EPIDEMY_H
 #define EPIDEMY_H
 
-// defined debug purpose variables
+// defined debug purpose variable
 //#define DEBUG
 
-// defined measurements of speedup variable
+// define the schedule and the chunk size
+#define SCHEDULE static
+#define SCHEDULE_STR(x) #x // -> transform the macro in a string
+#define CHUNK_SIZE 10
+
+// defined measurements of speedup variables
 #define SERIAL_MEASUREMENTS
 #define PARALLEL_MEASUREMENTS
 
@@ -74,7 +79,7 @@ void updateStatus(Person_t *p, int n); // computes the future status of a person
 void checkArguments(int argc, char *argv[]); // checks and saves args
 void errorHandler(void); // prints appropriate message for error
 Person_t* readData(int *n); // reads data from the file -> returns the Person array and the array size (as parameter)
-void writeData(Person_t *personArray, int n, unsigned int type); // prints data in the output file
+void writeData(Person_t *personArray, int n); // prints data in the output file
 void printStats(double time, int nrPers); // prints in the file the stats obtained by making measurements
 void printPersonArray(Person_t* personArray, int numOfPersons); // prints array data
 

@@ -1,9 +1,5 @@
 #include "epidemy.h"
 
-// define the schedule and the chunk size
-#define SCHEDULE static
-#define CHUNK_SIZE 10
-
 // simulation
 void start_parallel_simulation(Person_t *p, int n)
 {
@@ -86,7 +82,7 @@ int main(int argc, char **argv)
 
 #endif
 
-    writeData(personArray, n, 1); // print final data in the file
+    writeData(personArray, n); // print final data in the file
 
     free(personArray);
     return 0;

@@ -238,13 +238,12 @@ void updateStatus(Person_t *p, int n)
 }
 
 // function: writeData() -> prints the person array in the output file
-void writeData(Person_t *p, int n, unsigned int type)
+void writeData(Person_t *p, int n)
 {
-    // open the specified file type = 0 => serial, type != 0 => parallel
     FILE *f;
     char string[100] = "";
     strncpy(string, INPUT_FILE_NAME, strlen(INPUT_FILE_NAME) - 4);
-    if (!type)
+    if (THREAD_NUMBER == 1)
     {
         strcat(string, "_serial_out.txt"); // assign the correct name to the output file
         f = fopen(string, "w");
@@ -253,6 +252,7 @@ void writeData(Person_t *p, int n, unsigned int type)
     {
         strcat(string, "_parallel_out.txt");
         f = fopen(string, "w");
+
     }
     if(f == NULL)
     {
@@ -280,10 +280,13 @@ void printStats(double time, int nrPers) // uses the global TOTAL_SIMULATION_TIM
     if(THREAD_NUMBER == 1) // choose the right file to print the stats
     {
         f = fopen("performance_serial.txt", "a");
+        fprintf(f, "-----------/------------ \n");
     }
     else
     {
         f = fopen("performance_parallel.txt", "a");
+        fprintf(f, "-----------/------------ \n");
+        fprintf(f, "Schedule: %s Chunk size: %d \n", SCHEDULE_STR(SCHEDULE), CHUNK_SIZE);
     }
 
     if(f == NULL)
@@ -292,7 +295,7 @@ void printStats(double time, int nrPers) // uses the global TOTAL_SIMULATION_TIM
         return;
     }
 
-    fprintf(f, "-----------/------------ \n");
+
     fprintf(f, "Total time: %f seconds\n", time);
     fprintf(f, "Total number of persons: %d\n", nrPers);
     fprintf(f, "Total time of simulation: %d \n", TOTAL_SIMULATION_TIME);
