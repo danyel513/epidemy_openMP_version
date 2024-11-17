@@ -274,7 +274,8 @@ void writeData(Person_t *p, int n)
 }
 
 // function: printStats() -> prints the measurements obtained in the output file
-void printStats(double time, int nrPers) // uses the global TOTAL_SIMULATION_TIME, THREAD_COUNT
+void printStats(double time, int nrPers, unsigned c) // uses the global TOTAL_SIMULATION_TIME, THREAD_COUNT
+// if c = 1 ("true") then prints schedule and chunk size
 {
     FILE *f;
     if(THREAD_NUMBER == 1) // choose the right file to print the stats
@@ -286,7 +287,7 @@ void printStats(double time, int nrPers) // uses the global TOTAL_SIMULATION_TIM
     {
         f = fopen("performance_parallel.txt", "a");
         fprintf(f, "-----------/------------ \n");
-        fprintf(f, "Schedule: %s Chunk size: %d \n", SCHEDULE_STR(SCHEDULE), CHUNK_SIZE);
+        if(c) fprintf(f, "Schedule: %s Chunk size: %d \n", (SCHEDULE_INT ? "static": "dynamic"), CHUNK_SIZE);
     }
 
     if(f == NULL)

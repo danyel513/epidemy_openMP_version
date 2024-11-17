@@ -1,2 +1,148 @@
+-----------/------------ 
+Schedule: static Chunk size: 5 
+Total time: 7.288816 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
 
+-----------/------------ 
+Schedule: static Chunk size: 10 
+Total time: 7.316757 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 20 
+Total time: 7.704806 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 100 
+Total time: 6.978530 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 5 
+Total time: 7.350753 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 10 
+Total time: 7.738820 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 20 
+Total time: 8.020388 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 100 
+Total time: 7.053198 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 5 
+Total time: 33.311114 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 10 
+Total time: 31.453059 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 20 
+Total time: 32.266977 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: static Chunk size: 100 
+Total time: 32.697744 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 5 
+Total time: 31.933194 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 10 
+Total time: 33.992680 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Schedule: dynamic Chunk size: 20 
+Total time: 32.188019 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 7.430384 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 7.096139 seconds
+Total number of persons: 10000
+Total time of simulation: 50 
+Total number of threads: 10 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 31.342853 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 5 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 29.511643 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 10 
+-----------/------------ 
 

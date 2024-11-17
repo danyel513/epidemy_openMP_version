@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     elapsed = (double) (finish.tv_sec - start.tv_sec);
     elapsed += (double) (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
 
-    printStats(elapsed, n);
+    printStats(elapsed, n, 0);
 
 #endif
 

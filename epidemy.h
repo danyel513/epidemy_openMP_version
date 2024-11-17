@@ -6,8 +6,9 @@
 
 // define the schedule and the chunk size
 #define SCHEDULE static
-#define SCHEDULE_STR(x) #x // -> transform the macro in a string
-#define CHUNK_SIZE 10
+#define SCHEDULE_INT 1 // macro for print in the file 1 == static and 0 == dynamic
+#define CHUNK_SIZE 100
+// after several measurements best option is static scheduling and a chunk size of 100
 
 // defined measurements of speedup variables
 #define SERIAL_MEASUREMENTS
@@ -80,7 +81,7 @@ void checkArguments(int argc, char *argv[]); // checks and saves args
 void errorHandler(void); // prints appropriate message for error
 Person_t* readData(int *n); // reads data from the file -> returns the Person array and the array size (as parameter)
 void writeData(Person_t *personArray, int n); // prints data in the output file
-void printStats(double time, int nrPers); // prints in the file the stats obtained by making measurements
+void printStats(double time, int nrPers, unsigned c); // prints in the file the stats obtained by making measurements
 void printPersonArray(Person_t* personArray, int numOfPersons); // prints array data
 
 #endif
