@@ -238,19 +238,20 @@ void updateStatus(Person_t *p, int n)
 }
 
 // function: writeData() -> prints the person array in the output file
-void writeData(Person_t *p, int n)
+void writeData(Person_t *p, int n, unsigned version)
 {
     FILE *f;
     char string[100] = "";
     strncpy(string, INPUT_FILE_NAME, strlen(INPUT_FILE_NAME) - 4);
-    if (THREAD_NUMBER == 1)
+    if (version == 0)
     {
         strcat(string, "_serial_out.txt"); // assign the correct name to the output file
         f = fopen(string, "w");
     }
     else
     {
-        strcat(string, "_parallel_out.txt");
+        if(version == 1) strcat(string, "_parallel_v1_out.txt");
+        else strcat(string, "_parallel_v2_out.txt");
         f = fopen(string, "w");
 
     }
@@ -274,8 +275,7 @@ void writeData(Person_t *p, int n)
 }
 
 // function: printStats() -> prints the measurements obtained in the output file
-void printStats(double time, int nrPers, unsigned c) // uses the global TOTAL_SIMULATION_TIME, THREAD_COUNT
-// if c = 1 ("true") then prints schedule and chunk size
+void printStats(double time, int nrPers, unsigned c) // uses the global TOTAL_SIMULATION_TIME, THREAD_COUNT if c = 1 ("true") then prints schedule and chunk size
 {
     FILE *f;
     if(THREAD_NUMBER == 1) // choose the right file to print the stats

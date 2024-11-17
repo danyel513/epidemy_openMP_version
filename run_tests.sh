@@ -7,41 +7,43 @@ gcc -Wall -c epidemy.c -o epidemy.o
 gcc -Wall serial_epidemy.c epidemy.o -o serial_epidemy
 
 # compile and link for parallel
-gcc -Wall parallel_epidemy.c epidemy.o -o parallel_epidemy
+gcc -Wall parallel_epidemy.c epidemy.o -o parallel_epidemy -fopenmp
 
 # validating outputs
 gcc -Wall validate_outputs.c -o validate_outputs
 
-# test serial program
+# test program
 echo "Values: population = {10k, 20k, 50k, 100k, 500k},
-      simulation time = {50, 100, 150, 200, 500}, threads = {5, 10} "
-
+      simulation time = {50, 100, 150, 200, 500}, threads = {5, 10}"
 
 # define params
-ITERATIONS=(50 100 150 200 500)
+ITERATIONS=(50 100 150)
 FILES=("epidemics10K.txt" "epidemics20K.txt" "epidemics50K.txt" "epidemics100K.txt")
-THREADS=5
+FILE_NAME=("epidemics10K" "epidemics20K" "epidemics50K" "epidemics100K")
+THREADS=(5 10)
 
 # running function - automate testing
-run_test()
-{
+run_test() {
     iteration=$1
     file=$2
+    threads=$3
+    file_name=$4
 
     echo "Running serial_epidemy with $iteration iterations on $file"
-    ./serial_epidemy "$iteration" "$file" "$THREADS"
+    ./serial_epidemy "$iteration" "$file" "$threads"
 
     echo "Running parallel_epidemy with $iteration iterations on $file"
-    ./parallel_epidemy "$iteration" "$file" "$THREADS"
+    ./parallel_epidemy "$iteration" "$file" "$threads" -fopenmp
 
     echo "Validating outputs..."
-    ./validate_outputs f_serial_out.txt f_parallel_out.txt
+    ./validate_outputs "${file_name}_serial_out.txt" "${file_name}_parallel_v1_out.txt"
+    ./validate_outputs "${file_name}_serial_out.txt" "${file_name}_parallel_v2_out.txt"
 }
 
 # iterate through the files and values
-for iteration in "${ITERATIONS[@]}"; do
-    for file in "${FILES[@]}"; do
-        run_test "$iteration" "$file"
+for iter in $(seq 0 $((${#ITERATIONS[@]} - 1))); do
+    for file in $(seq 0 $((${#FILES[@]} - 1))); do
+        run_test "${ITERATIONS[$iter]}" "${FILES[$file]}" "${THREADS[0]}" "${FILE_NAME[$file]}"
+        #run_test "${ITERATIONS[$iter]}" "${FILES[$file]}" "${THREADS[1]}" "${FILE_NAME[$file]}"
     done
 done
-

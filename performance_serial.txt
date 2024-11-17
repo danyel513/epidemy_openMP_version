@@ -1,14 +1,84 @@
 -----------/------------ 
-Total time: 9.089379 seconds
+Total time: 7.251778 seconds
 Total number of persons: 10000
 Total time of simulation: 50 
 Total number of threads: 1 
 -----------/------------ 
 
 -----------/------------ 
-Total time: 7.389908 seconds
-Total number of persons: 10000
+Total time: 11.225926 seconds
+Total number of persons: 20000
 Total time of simulation: 50 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 31.918359 seconds
+Total number of persons: 50000
+Total time of simulation: 50 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 79.841153 seconds
+Total number of persons: 100000
+Total time of simulation: 50 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 14.358048 seconds
+Total number of persons: 10000
+Total time of simulation: 100 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 21.110697 seconds
+Total number of persons: 20000
+Total time of simulation: 100 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 59.109685 seconds
+Total number of persons: 50000
+Total time of simulation: 100 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 141.974312 seconds
+Total number of persons: 100000
+Total time of simulation: 100 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 22.039412 seconds
+Total number of persons: 10000
+Total time of simulation: 150 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 32.100394 seconds
+Total number of persons: 20000
+Total time of simulation: 150 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 82.197718 seconds
+Total number of persons: 50000
+Total time of simulation: 150 
+Total number of threads: 1 
+-----------/------------ 
+
+-----------/------------ 
+Total time: 207.707473 seconds
+Total number of persons: 100000
+Total time of simulation: 150 
 Total number of threads: 1 
 -----------/------------ 
 

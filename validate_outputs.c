@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // initialize mutecx lock and cond. variables
+    // initialize mutex lock and cond. variables
     initialize();
 
     // use THREAD_AMOUNT threads on each
